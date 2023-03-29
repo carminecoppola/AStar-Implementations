@@ -1,3 +1,5 @@
+package PrimaImplementazione;
+
 public class Cell {
 
     //Coordinate

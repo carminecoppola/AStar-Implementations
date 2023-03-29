@@ -1,3 +1,5 @@
+package PrimaImplementazione;
+
 import java.util.PriorityQueue;
 
 public class AStar {
@@ -7,7 +9,7 @@ public class AStar {
     public static final int V_H_COST = 10; //costo degli spostamenti verticali e orizzontali
 
 
-    private Cell[][] grid;//una matrice di oggetti di tipo Cell che rappresentano le celle della griglia
+    private Cell[][] grid;//Una matrice di oggetti di tipo Cell che rappresentano le celle della griglia
     //Definizione della priority queue per aprire le celle
     //Apertura delle celle: OPEN SET
     //mettiamo prima le celle che hanno il costo minore
