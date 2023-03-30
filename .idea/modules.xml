@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AStar_Camilla/AStar_Camilla.iml" filepath="$PROJECT_DIR$/AStar_Camilla/AStar_Camilla.iml" />
       <module fileurl="file://$PROJECT_DIR$/AStella.iml" filepath="$PROJECT_DIR$/AStella.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrimaImplementazione/PrimaImplementazione.iml" filepath="$PROJECT_DIR$/PrimaImplementazione/PrimaImplementazione.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RicercaPercorsoPiuBreve/RicercaPercorsoPiuBreve.iml" filepath="$PROJECT_DIR$/RicercaPercorsoPiuBreve/RicercaPercorsoPiuBreve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SecondaImplementazione/SecondaImplementazione.iml" filepath="$PROJECT_DIR$/SecondaImplementazione/SecondaImplementazione.iml" />
     </modules>
   </component>
 </project>

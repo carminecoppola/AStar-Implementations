@@ -1,4 +1,3 @@
-package SecondaImplementazione;
 
 import java.util.*;
 public class AStar {
@@ -6,25 +5,25 @@ public class AStar {
     private static int DEFAULT_HV_COST = 10; // Costo Orizzontale e Verticale
     private static int DEFAULT_DIAGONAL_COST = 14; //Costo Diagionale
 
-    private int HVCostante;
-    private int CostanteDiagonale;
+    private int HVCosto;
+    private int costoDiagonale;
 
     private Nodo[][] searchArea; //Rappresenta la griglia rettangolare di nodi in cui viene effettuata la ricerca.
-    private PriorityQueue<Nodo> openList; //Una PriorityQueue di nodi aperti che vengono ancora valutati dalla ricerca
-    private Set<Nodo> closedSet; //Un Set di nodi che sono stati già valutati dalla ricerca
+    private PriorityQueue<Nodo> openList; //Una PriorityQueue di nodi aperti/openset che vengono ancora valutati dalla ricerca
+    private Set<Nodo> closedSet; //Un Set di nodi che sono stati già valutati dalla ricerca e che non sarnno più prelevati
     private Nodo nodoIniziale;
     private Nodo nodoFinale;
 
     /*
         Il codice fornisce due costruttori per la classe AStar:
          1.Uno che accetta tutti i parametri necessari,
-         2.Uno che utilizza i valori predefiniti per i costi
-           orizzontali/verticali e diagonali.
-     */
+         2.Uno che utilizza i valori predefiniti per i costi orizzontali/verticali e diagonali.
+    */
+
     //Primo Costruttore:
-    public AStar(int rows, int cols,  Nodo nodoIniziale, Nodo nodoFinale ,int HVCostante, int costanteDiagonale) {
-        this.HVCostante = HVCostante;
-        this.CostanteDiagonale = costanteDiagonale;
+    public AStar(int rows, int cols,  Nodo nodoIniziale, Nodo nodoFinale ,int HVCosto, int costoDiagonale) {
+        this.HVCosto = HVCosto;
+        this.costoDiagonale = costoDiagonale;
         setNodoIniziale(nodoIniziale);
         setNodoFinale(nodoFinale);
         this.searchArea = new Nodo[rows][cols];
@@ -73,6 +72,15 @@ public class AStar {
             int row = blocksArray[i][0];
             int col = blocksArray[i][1];
             setBlock(row,col);
+        }
+    }
+
+
+    public void setParking(int[][] blocksParking){
+        for(int i = 0; i < blocksParking.length; i++){
+            int row = blocksParking[i][0];
+            int col = blocksParking[i][1];
+            setPark(row, col);
         }
     }
 
@@ -142,12 +150,12 @@ public class AStar {
         int rigaLow = row + 1;
         if (rigaLow < getSearchArea().length){
             if (col - 1  >= 0){
-                checkNodo(nodoCorrente, col - 1, rigaLow,getCostanteDiagonale());
+                checkNodo(nodoCorrente, col - 1, rigaLow, getCostoDiagonale());
             }
             if (col + 1 < getSearchArea()[0].length) {
-                checkNodo(nodoCorrente, col + 1, rigaLow, getCostanteDiagonale()); // Comment this line if diagonal movements are not allowed
+                checkNodo(nodoCorrente, col + 1, rigaLow, getCostoDiagonale()); // Comment this line if diagonal movements are not allowed
             }
-            checkNodo(nodoCorrente, col, rigaLow, getHVCostante());
+            checkNodo(nodoCorrente, col, rigaLow, getHVCosto());
         }
     }
 
@@ -167,10 +175,10 @@ public class AStar {
         int col = nodoCorrente.getCol();
         int middleRow = row;
         if (col - 1 >= 0) {
-            checkNodo(nodoCorrente, col - 1, middleRow, getHVCostante());
+            checkNodo(nodoCorrente, col - 1, middleRow, getHVCosto());
         }
         if (col + 1 < getSearchArea()[0].length) {
-            checkNodo(nodoCorrente, col + 1, middleRow, getHVCostante());
+            checkNodo(nodoCorrente, col + 1, middleRow, getHVCosto());
         }
     }
 
@@ -191,12 +199,12 @@ public class AStar {
         int upperRow = row - 1;
         if (upperRow >= 0) {
             if (col - 1 >= 0) {
-                checkNodo(nodoCorrente, col - 1, upperRow, getCostanteDiagonale()); // Comment this if diagonal movements are not allowed
+                checkNodo(nodoCorrente, col - 1, upperRow, getCostoDiagonale()); // Comment this if diagonal movements are not allowed
             }
             if (col + 1 < getSearchArea()[0].length) {
-                checkNodo(nodoCorrente, col + 1, upperRow, getCostanteDiagonale()); // Comment this if diagonal movements are not allowed
+                checkNodo(nodoCorrente, col + 1, upperRow, getCostoDiagonale()); // Comment this if diagonal movements are not allowed
             }
-            checkNodo(nodoCorrente, col, upperRow, getHVCostante());
+            checkNodo(nodoCorrente, col, upperRow, getHVCosto());
         }
     }
 
@@ -228,6 +236,7 @@ public class AStar {
                 }
             }
         }
+
     }
 
 
@@ -235,6 +244,12 @@ public class AStar {
     private void setBlock(int row, int col) {
         this.searchArea[row][col].setBlock(true);
     }
+
+    private void setPark(int row, int col) {
+        this.searchArea[row][col].setPark(true);
+    }
+
+
     private boolean isFinalNode(Nodo currentNode) {
         return currentNode.equals(nodoFinale);
     }
@@ -243,20 +258,20 @@ public class AStar {
         return openList.size() == 0;
     }
 
-    public int getHVCostante() {
-        return HVCostante;
+    public int getHVCosto() {
+        return HVCosto;
     }
 
-    public void setHVCostante(int HVCostante) {
-        this.HVCostante = HVCostante;
+    public void setHVCosto(int HVCosto) {
+        this.HVCosto = HVCosto;
     }
 
-    public int getCostanteDiagonale() {
-        return CostanteDiagonale;
+    public int getCostoDiagonale() {
+        return costoDiagonale;
     }
 
-    public void setCostanteDiagonale(int costanteDiagonale) {
-        CostanteDiagonale = costanteDiagonale;
+    public void setCostoDiagonale(int costoDiagonale) {
+        this.costoDiagonale = costoDiagonale;
     }
 
     public Nodo[][] getSearchArea() {

@@ -1,24 +1,30 @@
-package SecondaImplementazione;
 
 import java.util.List;
 public class Main {
     public static void main(String[] args) {
-        Nodo initialNode = new Nodo(2, 1);
-        Nodo finalNode = new Nodo(2, 5);
+        Location start = new Location();
+        Nodo initialNode = start.chooseStart("San Giorgio");
+        Nodo finalNode = start.chooseEnd("Napoli");
+
         int rows = 6;
         int cols = 7;
+
         AStar aStar = new AStar(rows, cols, initialNode, finalNode);
         int[][] blocksArray = new int[][]{{1, 3}, {2, 3}, {3, 3}};
+        int[][] blocksParking = new int[][]{{0,2}, {0,3}, {1,4}};
         aStar.setBlocchi(blocksArray);
+        aStar.setParking(blocksParking);
         List<Nodo> path = aStar.ricercaPercorso();
         for (Nodo node : path) {
             System.out.println(node);
+            if(node.isPark())
+                System.out.println("Parcheggio trovato");
         }
 
         //Search Area
         //      0   1   2   3   4   5   6
-        // 0    -   -   -   -   -   -   -
-        // 1    -   -   -   B   -   -   -
+        // 0    -   -   P   P   -   -   -
+        // 1    -   -   -   B   P   -   -
         // 2    -   I   -   B   -   F   -
         // 3    -   -   -   B   -   -   -
         // 4    -   -   -   -   -   -   -

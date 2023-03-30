@@ -1,5 +1,3 @@
-package PrimaImplementazione;
-
 import java.util.PriorityQueue;
 
 public class AStar {

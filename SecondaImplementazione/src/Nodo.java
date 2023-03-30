@@ -1,10 +1,6 @@
-package SecondaImplementazione;
-
 public class Nodo {
 
     private int g, f, h , row, col;
-
-
     private boolean isBlock;
     private Nodo parent;
 
@@ -26,16 +22,14 @@ public class Nodo {
         this.h = Math.abs(nodoFinale.getRow() - getRow()) + Math.abs(nodoFinale.getCol() - getCol());
     }
 
-    /*
 
-     */
     public void calcoloCostoFinale(){
         int costoFinale = getG() + getH();
         setF(costoFinale);
     }
 
     /*  setNodoData(Nodo currentNodo, int cost):
-        Questo metodo imposta i dati del nodo (costo g, genitore, costo totale f)
+        Questo metodo imposta i dati del nodo (costo g, padre, costo totale f)
         in base al nodo corrente e al costo specificati. Il costo g viene calcolato
         come la somma del costo g del nodo corrente e del costo specificato.
         Il genitore del nodo viene impostato come il nodo corrente. Infine, il
@@ -65,7 +59,7 @@ public class Nodo {
         return false;
     }
 
-    //
+
     @Override
     public boolean equals(Object arg0){
         Nodo other = (Nodo) arg0;
@@ -73,11 +67,11 @@ public class Nodo {
 
     }
 
-    //
     @Override
     public String toString() {
         return "Nodo [row=" + row + ", col=" + col + "]";
     }
+
 
     //Metodi di Set & Get
     public void setG(int g) {
