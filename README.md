@@ -27,8 +27,17 @@ To use this AStar algorithm implementation, follow these steps:
 
 ## Contributions
 
-Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+This repository was developed by:
 
+- Bucciero Vincenzo
+- Coppola Carmine
+- De Martino Camilla
 ## License
 
-[Specify the license for your project, if applicable]
+Copyright (c) [2023] [AStar]
+
+All rights reserved.
+
+Duplication or reproduction, in whole or in part, in any form or by any means, is prohibited without the prior written permission of the author, except as permitted by copyright laws.
+
+The ApPost project, including all its files, documentation, and resources, is the exclusive property of [Carmine Coppola/Camilla De Martino/Vincenzo Bucciero]. Unauthorized use of these materials is prohibited.
