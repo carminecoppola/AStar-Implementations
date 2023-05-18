@@ -18,12 +18,11 @@ The AStar algorithm is a popular pathfinding algorithm used to find the shortest
 
 To use this AStar algorithm implementation, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/your-repository.git`
-2. Navigate to the project directory: `cd your-repository`
-3. Compile the source code: `javac AStar.java`
-4. Run the program: `java AStar`
-5. Follow the prompts to provide the necessary inputs (graph structure, start and goal nodes, etc.)
-6. The program will output the shortest path found using the AStar algorithm.
+1. Clone the repository: `git clone https://github.com/carminecoppola/AStar-Implementations.git`
+2. Compile the source code: `javac AStar.java`
+3. Run the program: `java AStar`
+4. Follow the prompts to provide the necessary inputs (graph structure, start and goal nodes, etc.)
+5. The program will output the shortest path found using the AStar algorithm.
 
 ## Contributions
 
